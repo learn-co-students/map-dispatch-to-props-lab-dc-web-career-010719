@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { addRestaurant } from '../actions/restaurants';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { addRestaurant } from '../actions/restaurants'
+import { connect } from 'react-redux'
 
 export class RestaurantInput extends Component {
 
@@ -12,18 +12,18 @@ export class RestaurantInput extends Component {
   handleOnNameChange = event => {
     this.setState({
       name: event.target.value
-    });
+    })
   }
 
   handleOnLocationChange = event => {
     this.setState({
       location: event.target.value
-    });
+    })
   }
 
   handleOnSubmit = event => {
-    event.preventDefault();
-    // add missing code
+    event.preventDefault()
+    this.props.addRestaurant(this.state)
   }
 
   render() {
@@ -45,10 +45,9 @@ export class RestaurantInput extends Component {
         </p>
         <input type="submit" />
       </form>
-    );
+    )
   }
-};
+}
 
 
-//connect this component by wrapping RestaurantInput below
-export default RestaurantInput
+export default connect(null, {addRestaurant})(RestaurantInput)
